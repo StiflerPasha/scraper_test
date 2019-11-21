@@ -20,3 +20,11 @@ export function formatPeriod(periodStr) {
     end,
   };
 }
+
+export const getTar = (tbl, tr, td) => {
+  return parseFloat(tbl
+   .find(`tr:nth-of-type(${ tr }) td:nth-of-type(${ td })`)
+   .text()
+   .replace(/\s+/g, '')
+   .replace(/,/g, '.'));
+};

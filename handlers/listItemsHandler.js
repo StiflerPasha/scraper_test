@@ -1,5 +1,5 @@
-import cherio from 'cherio';
-import chalk  from 'chalk';
+import cheerio from 'cheerio';
+import chalk   from 'chalk';
 
 import { getPageContent } from '../helpers/puppeteer';
 import { formatPeriod }   from '../helpers/common';
@@ -10,8 +10,9 @@ export default async function listItemsHandler(data) {
   try {
     for (const initialData of data) {
       console.log(chalk.green('Getting data from: ') + chalk.green.bold(initialData.url));
+      
       const detailContent = await getPageContent(initialData.url);
-      const $ = cherio.load(detailContent);
+      const $ = cheerio.load(detailContent);
       
       let period = $('.catalog-generation-summary__desc_period')
        .clone()
